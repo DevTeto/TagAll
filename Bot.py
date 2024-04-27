@@ -28,7 +28,7 @@ async def start(event):
     if not event.is_private:
         return await event.respond("↢ انا علي قيد الحياه 👋")
     await event.reply(
-        "اهلا 👋 \n🏷 وظيفتي هي منشن إلى كل عضو في المجموعة في رسالة واحده لجذب اهتمام الأعضاء\n👇 استخدم الأزرار أدناه لاستخدام الروبوت",
+        "اهلا 👋\n\n🏷 وظيفتي هي منشن إلى كل عضو في المجموعة في رسالة واحده لجذب اهتمام الأعضاء\n\n👇 استخدم الأزرار أدناه لاستخدام الروبوت",
         link_preview=False,
         buttons=(
             [
@@ -145,11 +145,11 @@ async def mentionall(event):
         pass
 
 
-@client.on(events.NewMessage(pattern="^/admins|/admin|@admin|@admins ?(.*)"))
+@client.on(events.NewMessage(pattern="^الادمنيه ?(.*)"))
 async def _(event):
     chat_id = event.chat_id
     if event.is_private:
-        return await event.respond("sᴏʀʀʏ ʏᴏᴜ ᴄᴀɴ ᴍᴇɴᴛɪᴏɴ ᴀᴅᴍɪɴ ᴏɴʟʏ ɪɴ ɢʀᴏᴜᴘ")
+        return await event.respond("اعتذر ولكن انت عضو لا يمكن استعمال الامر")
 
     is_admin = False
     try:
@@ -162,10 +162,10 @@ async def _(event):
         ):
             is_admin = True
     if not is_admin:
-        return await event.respond("ᴏɴʟʏ ᴀᴅᴍɪɴ ᴄᴀɴ ᴍᴇɴᴛɪᴏɴ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs")
+        return await event.respond("اعتذر ولكن انت عضو لا يمكن استعمال الامر")
 
     if event.pattern_match.group(1) and event.is_reply:
-        return await event.respond("ɢɪᴠᴇ sᴏᴍᴇ ᴛᴇxᴛ ᴛᴏ ᴍᴇɴᴛɪᴏɴ")
+        return await event.respond("اعطني شي لمنشن المسؤلين")
     elif event.pattern_match.group(1):
         mode = "text_on_cmd"
         msg = event.pattern_match.group(1)
@@ -208,13 +208,13 @@ async def _(event):
 @client.on(events.NewMessage(pattern="^الغاء المنشن$"))
 async def cancel_spam(event):
     if not event.chat_id in spam_chats:
-        return await event.respond("__There is no proccess on going...__")
+        return await event.respond("انا متوقف عن العمل لاستعمالي ارسل ‹ تاك للكل ›")
     else:
         try:
             spam_chats.remove(event.chat_id)
         except:
             pass
-        return await event.respond("تم إيقاف المنشن بنجاح √")
+        return await event.respond("تم ايقاف المنشن بنجاح لاستعمال الامر مره اخري ارسل تاك للكل 👋")
 
 
 print("Don't forget to visit Source Tito. All rights reserved @wx_pm")
