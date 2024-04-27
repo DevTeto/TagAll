@@ -1,0 +1,17 @@
+{
+    "name": "TagAll",
+    "description": "Bot Telegram The idea is simple and developed by Teto",
+    "logo": "https://telegra.ph/file/a399083acca31be389672.jpg",
+    "env": {
+        "TOKEN": {
+            "description": "ضـع هنا توكن بوتك 🪼"
+        },
+        "APP_ID": {
+            "description": "ضـع هنا الايبي ايدي مثال ‹ 28132534 ›"
+        },
+        "API_HASH": {
+            "description": "ضـع هنا الايبي هاش مثال ‹ 96218f010be2351d57442ce5 ›"
+        }
+    },
+    "buildpacks": [{"url": "heroku/python"}]
+}
